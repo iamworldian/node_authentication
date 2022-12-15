@@ -1,0 +1,26 @@
+{
+  "name": "node_authentication_practice",
+  "version": "1.0.0",
+  "description": "node js authentication practice project with (JWT , express , mongoDB)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamworldian/node_authentication_practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamworldian/node_authentication_practice/issues"
+  },
+  "homepage": "https://github.com/iamworldian/node_authentication_practice#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0",
+    "validator": "^13.7.0"
+  }
+}

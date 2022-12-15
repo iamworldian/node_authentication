@@ -1,0 +1,11 @@
+<h1>Hello <%= users[0] %></h1>
+<body>
+  <ul>
+    <% for(let person of users) {%> 
+        <% if(person === 'Ashik') { %>
+        <li><%= person %></li>
+        <% } else { %>
+        <li>This is not Ashik , it is <%= person %></li>
+    <% } }%>
+  </ul>
+</body>
