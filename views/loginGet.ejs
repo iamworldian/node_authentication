@@ -1,1 +1,62 @@
-<h1> This is login Get method </h1>
+<%- include('header') %>
+
+<style>
+    .form-text{
+        color:red
+    }
+</style>
+
+<form style="margin: 5em;">
+    <h2>Log In</h2>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="text" name ="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        <div id="passwordHelp" class="form-text"></div>
+    </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script>
+    const form = document.querySelector('form');
+    
+
+    form.addEventListener('submit' ,async (e) => {
+        e.preventDefault();
+
+        const email = form.email.value;
+        const password = form.password.value;
+    
+        const emailHelp = document.getElementById('emailHelp')
+        const passwordHelp = document.getElementById('passwordHelp')
+
+        emailHelp.textContent = '';
+        passwordHelp.textContent = '';
+
+        try{
+            const res = await fetch('/login' , {
+                method : 'POST',
+                body : JSON.stringify({email,password}),
+                headers : {'Content-Type' : 'application/json'}
+            })
+            
+            const data = await res.json();
+            console.log(data);
+            
+
+            if(data._id){
+                location.assign('/')
+            }else{
+                emailHelp.textContent = data.errors.email;
+                passwordHelp.textContent = data.errors.password;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    })
+</script>
+<%- include('footer') %>
